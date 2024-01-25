@@ -12,7 +12,7 @@ module.exports = {
   "use strict";
 
   var YUVBuffer = require('yuv-buffer'),
-    YUVCanvas = require('./../src/yuv-canvas.js');
+    YUVCanvas = require('../src/yuv-canvas.js');
 
   var canvas = document.querySelector('canvas'),
     yuvCanvas = YUVCanvas.attach(canvas),

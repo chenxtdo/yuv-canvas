@@ -18,8 +18,8 @@ COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
-(function() {
-  "use strict";
+;(function () {
+  'use strict'
 
   /**
    * Convert a ratio into a bit-shift count; for instance a ratio of 2
@@ -35,16 +35,19 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    */
   function depower(ratio) {
     var shiftCount = 0,
-      n = ratio >> 1;
+      n = ratio >> 1
     while (n != 0) {
-      n = n >> 1;
+      n = n >> 1
       shiftCount++
     }
-    if (ratio !== (1 << shiftCount)) {
-      throw 'chroma plane dimensions must be power of 2 ratio to luma plane dimensions; got ' + ratio;
+    if (ratio !== 1 << shiftCount) {
+      throw (
+        'chroma plane dimensions must be power of 2 ratio to luma plane dimensions; got ' +
+        ratio
+      )
     }
-    return shiftCount;
+    return shiftCount
   }
 
-  module.exports = depower;
-})();
+  module.exports = depower
+})()

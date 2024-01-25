@@ -18,12 +18,12 @@ COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
-(function() {
-  "use strict";
+;(function () {
+  'use strict'
 
   var FrameSink = require('./FrameSink.js'),
     SoftwareFrameSink = require('./SoftwareFrameSink.js'),
-    WebGLFrameSink = require('./WebGLFrameSink.js');
+    WebGLFrameSink = require('./WebGLFrameSink.js')
 
   /**
    * @typedef {Object} YUVCanvasOptions
@@ -48,16 +48,19 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
      * @param {YUVCanvasOptions} options - map of options
      * @returns {FrameSink} - instance of suitable subclass.
      */
-    attach: function(canvas, options) {
-      options = options || {};
-      var webGL = ('webGL' in options) ? options.webGL : WebGLFrameSink.isAvailable();
+    attach: function (canvas, options) {
+      options = options || {}
+      var webGL =
+        'webGL' in options ? options.webGL : WebGLFrameSink.isAvailable()
       if (webGL) {
-        return new WebGLFrameSink(canvas, options);
+        console.log('Using WebGLFrameSink for rendering')
+        return new WebGLFrameSink(canvas, options)
       } else {
-        return new SoftwareFrameSink(canvas, options);
+        console.log('Using SoftwareFrameSink for rendering')
+        return new SoftwareFrameSink(canvas, options)
       }
-    }
-  };
+    },
+  }
 
-  module.exports = YUVCanvas;
-})();
+  module.exports = YUVCanvas
+})()

@@ -1,5 +1,5 @@
-(function() {
-  "use strict";
+;(function () {
+  'use strict'
 
   /**
    * Create a YUVCanvas and attach it to an HTML5 canvas element.
@@ -15,7 +15,7 @@
    * @abstract
    */
   function FrameSink(canvas, options) {
-    throw new Error('abstract');
+    throw new Error('abstract')
   }
 
   /**
@@ -26,17 +26,16 @@
    * @param {YUVBuffer} buffer - the YUV buffer to draw
    * @see {@link https://www.npmjs.com/package/yuv-buffer|yuv-buffer} for format
    */
-  FrameSink.prototype.drawFrame = function(buffer) {
-    throw new Error('abstract');
-  };
+  FrameSink.prototype.drawFrame = function (buffer) {
+    throw new Error('abstract')
+  }
 
   /**
    * Clear the canvas using appropriate underlying 2d or 3d context.
    */
-  FrameSink.prototype.clear = function() {
-    throw new Error('abstract');
-  };
+  FrameSink.prototype.clear = function () {
+    throw new Error('abstract')
+  }
 
-  module.exports = FrameSink;
-
-})();
+  module.exports = FrameSink
+})()

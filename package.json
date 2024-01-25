@@ -8,7 +8,7 @@
     "url": "https://github.com/brion/yuv-canvas.git"
   },
   "scripts": {
-    "build": "grunt",
+    "build": "rollup -c --environment PROD",
     "start": "http-server ./docs/ && echo \"Open http://localhost:8080/demo.html in a browser.\"",
     "prepublish": "npm run-script build"
   },
@@ -29,6 +29,12 @@
     "grunt-eslint": "^19.0.0",
     "grunt-text-replace": "^0.4.0",
     "http-server": "^0.12.3",
-    "yuv-buffer": "^1.0.0"
+    "yuv-buffer": "^1.0.0",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^10.0.0",
+    "@rollup/plugin-replace": "^4.0.0",
+    "rollup": "^2.33.1",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-terser": "^7.0.2"
   }
 }
