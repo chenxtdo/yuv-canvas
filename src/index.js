@@ -46,11 +46,13 @@ this.addEventListener(
   function (e) {
     var data = e.data;
     var uuid = data.uuid;
+    var type = data.type || 'video';
     var canvas = data.canvas;
     var frame = data.frame;
+    var canvasKey = type + '-' + uuid;
     if (canvas) {
       var yuvCanvas = YUVCanvas.attach(canvas);
-      yuvCanvasMap[uuid] = yuvCanvas;
+      yuvCanvasMap[canvasKey] = yuvCanvas;
     } else if (frame) {
       var yuvFrame = getYuvFrame(
         frame.data,
@@ -59,7 +61,7 @@ this.addEventListener(
         frame.displayWidth,
         frame.displayHeight
       );
-      var yuvCanvas = yuvCanvasMap[uuid];
+      var yuvCanvas = yuvCanvasMap[canvasKey];
       yuvCanvas.drawFrame(yuvFrame);
     }
   },

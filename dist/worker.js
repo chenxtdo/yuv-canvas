@@ -1000,11 +1000,13 @@
 	  function (e) {
 	    var data = e.data;
 	    var uuid = data.uuid;
+	    var type = data.type || 'video';
 	    var canvas = data.canvas;
 	    var frame = data.frame;
+	    var canvasKey = type + '-' + uuid;
 	    if (canvas) {
 	      var yuvCanvas$1 = yuvCanvas.attach(canvas);
-	      yuvCanvasMap[uuid] = yuvCanvas$1;
+	      yuvCanvasMap[canvasKey] = yuvCanvas$1;
 	    } else if (frame) {
 	      var yuvFrame = getYuvFrame(
 	        frame.data,
@@ -1013,7 +1015,7 @@
 	        frame.displayWidth,
 	        frame.displayHeight
 	      );
-	      var yuvCanvas$1 = yuvCanvasMap[uuid];
+	      var yuvCanvas$1 = yuvCanvasMap[canvasKey];
 	      yuvCanvas$1.drawFrame(yuvFrame);
 	    }
 	  },
