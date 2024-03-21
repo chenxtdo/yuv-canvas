@@ -50,9 +50,12 @@ this.addEventListener(
     var canvas = data.canvas;
     var frame = data.frame;
     var canvasKey = type + '-' + uuid;
+    var removeCanvas = data.removeCanvas
     if (canvas) {
       var yuvCanvas = YUVCanvas.attach(canvas);
       yuvCanvasMap[canvasKey] = yuvCanvas;
+    }  else if (removeCanvas) {
+      delete yuvCanvasMap[canvasKey];
     } else if (frame) {
       var yuvFrame = getYuvFrame(
         frame.data,
