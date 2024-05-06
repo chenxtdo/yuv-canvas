@@ -65,7 +65,9 @@ this.addEventListener(
         frame.displayHeight
       );
       var yuvCanvas = yuvCanvasMap[canvasKey];
-      yuvCanvas.drawFrame(yuvFrame);
+      if(yuvCanvas) {
+        yuvCanvas.drawFrame(yuvFrame);
+      }
     }
   },
   false

@@ -1004,9 +1004,12 @@
 	    var canvas = data.canvas;
 	    var frame = data.frame;
 	    var canvasKey = type + '-' + uuid;
+	    var removeCanvas = data.removeCanvas;
 	    if (canvas) {
 	      var yuvCanvas$1 = yuvCanvas.attach(canvas);
 	      yuvCanvasMap[canvasKey] = yuvCanvas$1;
+	    }  else if (removeCanvas) {
+	      delete yuvCanvasMap[canvasKey];
 	    } else if (frame) {
 	      var yuvFrame = getYuvFrame(
 	        frame.data,
@@ -1016,7 +1019,9 @@
 	        frame.displayHeight
 	      );
 	      var yuvCanvas$1 = yuvCanvasMap[canvasKey];
-	      yuvCanvas$1.drawFrame(yuvFrame);
+	      if(yuvCanvas$1) {
+	        yuvCanvas$1.drawFrame(yuvFrame);
+	      }
 	    }
 	  },
 	  false
